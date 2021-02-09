@@ -1,0 +1,245 @@
+{% load static %}
+{% load embed_video_tags %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Khmerkit English Tutorial Unit</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css'%}">
+    <!-- Custom icon font-->
+    <link rel="stylesheet" href="{% static 'css/fontastic.css'%}">
+    <!-- Google fonts - Open Sans-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <!-- Fancybox-->
+    <link rel="stylesheet" href="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.css'%}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.green.css'%}" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'favicon.png'%}">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="nnpqSnBx"></script>
+
+
+    <header class="header">
+      <!-- Main Navbar-->
+      <nav class="navbar navbar-expand-lg">
+        <div class="search-area">
+          <div class="search-area-inner d-flex align-items-center justify-content-center">
+            <div class="close-btn"><i class="icon-close"></i></div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-8">
+                <form action="{% url 'eng-course-search-result-page' %}" class="search-form">
+                  <div class="form-group">
+                    <input type="text" name="q" id="search" placeholder="រកមេរៀនភាសាអង់គ្លេសតាមរយ: ចំណងជើងមេរៀន ឬ ពាក្យគន្លឹះក្នុងសេចក្តីផ្តើម">
+                    <button type="submit" class="submit"><i class="icon-search-1"></i></button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <!-- Navbar Brand -->
+          <div class="navbar-header d-flex align-items-center justify-content-between">
+            <!-- Navbar Brand --> <a href="/" class="navbar-brand">&nbsp;KhmerKit</a>
+            <!-- Navbar Logo --> <a href="/" class="navbar-brand"><img src="{% static 'img/greenflowerfit.png'%}"></a>
+            <!-- Toggle Button-->
+            <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+          </div>
+
+          <!-- Navbar Menu -->
+          <div id="navbarcollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+              <li class="nav-item"><a href="/" class="nav-link">ព័ត៌មាន</a>
+              </li>
+
+              <li class="nav-item"><a href="/english_tutorial" class="nav-link active">រៀនអង់គ្លេស</a>
+              </li>
+
+              <li class="nav-item"><a href="/mathematics_tutorial" class="nav-link">រៀនគណិត</a>
+              </li>
+
+              <li class="nav-item"><a href="/python_tutorial" class="nav-link">រៀន Python</a>
+              </li>
+
+              <li class="nav-item"><a href="/artificial_intelligence_tutorial" class="nav-link">រៀន AI</a>
+              </li>
+
+            </ul>
+            <div class="navbar-text">
+              <a href="#" class="search-btn"><i class="icon-search-1"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8">
+          <div class="container">
+              <h6 style="color:#33b35a"> មេរៀនភាសាអង់គ្លេស</h6>
+              <br>
+
+              <h4>{{ english_unit.title }}</h4>
+
+              <div class="post-meta d-flex justify-content-between">
+                  <div class="category"><a href="{% url 'eng-course-chapter-list-page'%}">ក្នុងជំពូកទី {{ english_unit.chapter.id }} : {{ english_unit.chapter.title }}</a></div>
+              </div>
+              <br>
+
+                 <div class="post-details">
+
+                       <div class="post-thumbnail"><img src="{{ english_unit.thumbnail1.url }}" alt="..." class="img-fluid"></div>
+                         <div class="post-meta d-flex justify-content-start">&nbsp;
+                            <div class> Photo credit: {{ english_unit.photo_credit_thumbnail1 }}</div>
+                         </div>
+
+                         <p>{{ english_unit.article1|safe}}</p>
+
+                         <div class="post-thumbnail"><img src="{{ english_unit.thumbnail2.url }}" alt="..." class="img-fluid"></div>
+                         <div class="post-meta d-flex justify-content-start">&nbsp;
+                            <div class> Photo credit: {{ english_unit.photo_credit_thumbnail2 }}</div>
+                         </div>
+
+                         <p>{{ english_unit.article2|safe }}</p>
+
+                         <div class="post-thumbnail"><img src="{{ english_unit.thumbnail3.url }}" alt="..." class="img-fluid"></div>
+                         <div class="post-meta d-flex justify-content-start">&nbsp;
+                            <div class> Photo credit: {{ english_unit.photo_credit_thumbnail3 }}</div>
+                         </div>
+
+                         <p>{{ english_unit.article3|safe }}</p>
+
+                    <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="mailto:khmerkittrov@gmail.com" class="author d-flex align-items-center flex-wrap">
+                        <div class="title" style="color:#000000"><span>{{ english_unit.author }}</span></div></a>
+                      <div class="d-flex align-items-center flex-wrap">
+                        <div class="date" style="color:#000000"><i class="icon-clock"></i> {{ english_unit.date_posted|timesince }} ago</div>
+                      </div>
+                    </div>
+                    <br>
+                 </div>
+
+                 <div class="fb-share-button" data-href="http://127.0.0.1:8000/english_course/{{english_unit.id}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fnews%2F2%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                 <div class="post-comments">
+                       <h5><span style="background-color: #1778F2; color:#ffffff" > comments </span> <span><h9>ដោយប្រើ</h9></span> <span style="color: #1778F2"> facebook account </span> </h5>
+                        <div class="fb-comments" data-href="http://127.0.0.1:8000/english_course/{{english_unit.id}}" data-numposts="5" data-width=""></div>
+
+                 </div>
+          </div>
+        </main>
+<!--        side bar-->
+       <aside class="col-lg-4">
+          <!-- Widget [Search Bar Widget]-->
+          <div class="widget search">
+            <header>
+              <h3 class="h6">ស្វែងរកមេរៀនភាសាអង់គ្លេស តាមរយ: ចំណងជើងមេរៀន ឬ ពាក្យគន្លឹះក្នុងសេចក្តីផ្តើម</h3>
+            </header>
+            <form action="{% url 'eng-course-search-result-page' %}" class="search-form">
+              <div class="form-group">
+                <input type="text" name = "q" placeholder="តើលោកអ្នកស្វែងរកអ្វី?">
+                <button type="submit" class="submit"><i class="icon-search"></i></button>
+              </div>
+            </form>
+          </div>
+
+         <!-- Widget [Chapters Widget]-->
+       <div class="widget categories">
+            <header>
+              <h4><a href="{% url 'eng-course-chapter-list-page' %}">មាតិកាតាមជំពូក</a></h4>
+            </header>
+            {% for cat in chapter_count %}
+            <div class="item d-flex justify-content-between">
+              <a href="{% url 'eng-course-chapter-list-page' %}">
+                {{ cat.chapter__title }}
+              </a>
+              <span>{{ cat.chapter__title__count}}
+              </span>
+            </div>
+            {% endfor %}
+       </div>
+
+           <!-- Widget [Facebook Page Widget]-->
+       <div class="widget tags">
+            <header>
+              <h3 class="h6">ព័ត៌មាន KhmerKit Facebook Page</h3>
+            </header>
+            <div class="fb-page" data-href="https://www.facebook.com/KhmerKit-&#x1781;&#x17d2;&#x1798;&#x17c2;&#x179a;&#x1782;&#x17b7;&#x178f;-100759281519898/" data-tabs="" data-width="200" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/KhmerKit-&#x1781;&#x17d2;&#x1798;&#x17c2;&#x179a;&#x1782;&#x17b7;&#x178f;-100759281519898/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KhmerKit-&#x1781;&#x17d2;&#x1798;&#x17c2;&#x179a;&#x1782;&#x17b7;&#x178f;-100759281519898/">KhmerKit ខ្មែរគិត</a></blockquote></div>
+       </div>
+
+
+        </aside>
+      </div>
+    </div>
+
+    <!-- Page Footer-->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="logo">
+              <h6 class="text-white">KhmerKit</h6>
+            </div>
+            <div class="contact-details">
+              <p>Phnom Penh, Cambodia</p>
+              <p>Email: <a href="mailto:khmerkittrov@gmail.com">khmerkittrov@gmail.com</a></p>
+              <ul class="social-menu">
+                <li class="list-inline-item"><a href="https://www.facebook.com/KhmerKit-%E1%9E%81%E1%9F%92%E1%9E%98%E1%9F%82%E1%9E%9A%E1%9E%82%E1%9E%B7%E1%9E%8F-100759281519898"><i class="fa fa-facebook-square"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCP4U11tWLJaEYgcpLyLvtDg"><i class="fa fa-youtube-play" style="color:red"></i></a></li>
+                <li class="list-inline-item"><a href="https://twitter.com/KhmerKit"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyrights">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-6">
+              <p> Think right. Act right. We survive.</p>
+            </div>
+
+            <div class="col-md-6">
+              <p>&copy; 2020. All rights reserved. Your great site.</p>
+            </div>
+
+            <div class="col-md-6 text-right">
+              <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel" class="text-white">Bootstrapious</a>
+                <!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- JavaScript files-->
+    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'vendor/popper.js/umd/popper.min.js'%}"> </script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'vendor/jquery.cookie/jquery.cookie.js'%}"> </script>
+    <script src="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.js'%}"></script>
+    <script src="{% static 'js/front.js'%}"></script>
+  </body>
+</html>
